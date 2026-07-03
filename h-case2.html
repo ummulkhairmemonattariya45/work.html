@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>>دوسری صورت — حیض و استحاضہ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body dir="rtl">
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="index.html" class="brand"><span>دارالافتا اہلسنت بنات</span></a>
+    <button class="nav-toggle" aria-label="مینیو کھولیں" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+   <ul class="nav-links">
+      <li><a href="index.html" class="active">ہوم</a></li>
+      <li class="nav-item-dropdown">
+        <a href="#" class="dropdown-toggle">حیض و استحاضہ <span class="caret">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="h-case1.html">پہلی صورت</a></li>
+          <li><a href="h-case2.html">دوسری صورت</a></li>
+        </ul>
+      </li>
+      <li class="nav-item-dropdown">
+        <a href="#" class="dropdown-toggle">نفاس <span class="caret">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="nifas-case1.html">پہلی صورت</a></li>
+          <li><a href="nifas-case2.html">دوسری صورت</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<section class="section">
+  <div class="article">
+    <p class="subtitle">CASE 2 — HAAIZ &amp; ISTIHAZA</p>
+   <h1>وسری صورت </h1>
+
+    <div class="notice-box">
+     خون دس دن سے بڑھ جاتا ہو لیکن پاکی کے ایام 15 یا اس سے زائد ہی رہتے ہیں
+    </div>
+
+    <p>اگر آپ کی صورتِ حال مندرجہ بالا بیان سے مطابقت رکھتی ہے تو نیچے دیا گیا فارم اپنی مکمل تفصیل کے ساتھ پُر کریں تاکہ آپ کو متعینہ جواب دیا جا سکے۔</p>
+
+    <div class="notice-box">
+      <strong>نوٹ:</strong> عورت اپنی نوعیت سلیکٹ کرنے کے بعد جب فارم فل کریں تو تاریخیں یاد نہ ہونے کی صورت میں اپنے غالب ظن کے مطابق جو یاد آئے اسے لکھ دیں۔
+    </div>
+
+    <form id="question-form" class="form-card" novalidate>
+      <h2>اپنا سوال درج کروائیں</h2>
+      <p class="form-hint">اپنی تفصیل درج کریں تاکہ مکمل اور متعین جواب دیا جا سکے۔</p>
+
+      <div class="field">
+        <label for="q-name">فون نمبر</label>
+        <input type="number" id="q-name" name="q-name" placeholder="جس پر ضرورتاً آپ سے رابطہ کیا جاسکے" required>
+      </div>
+      <br>
+
+      <div class="card-1">
+        <br>
+        <p class="para">.آپ کے ساتھ یہ مسئلہ جتنی بار پیش آیا مزید کے آپشن  کو  کلک کرکے ہر بار کی تاریخیں لکھیں</p>
+         <br>
+        <div id="excess-bleed-entries"></div>
+
+        <button type="button" id="add-excess-entry-btn" class="btn btn-outline" style="margin-top:6px;">+ مزید شامل کریں</button>
+      </div>
+      <br>
+
+      <div class="field">
+        <label>خون اور پاکی کے ایام کی تفصیل</label>
+        <p class="form-hint" style="margin:0 0 16px;">اس مسئلے سے پہلے کے کم سے کم تین ماہ کے حیض کی تاریخیں درج ذیل کالمز میں فل کریں</p>
+
+        <div id="date-entries"></div>
+
+        <button type="button" id="add-entry-btn" class="btn btn-outline" style="margin-top:6px;">+ مزید دورانیہ شامل کریں</button>
+      </div>
+
+      <div class="field">
+        <label for="q-text">اضافی تفصیل / سوال (اگر کوئی ہو)</label>
+        <textarea id="q-text" name="q-text" placeholder="کوئی اضافی وضاحت یہاں لکھ سکتی ہیں"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">سوال بھیجیں</button>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <template id="excess-bleed-template">
+      <div class="date-entry-row">
+        <div class="date-entry-header">
+          <span class="date-entry-num"></span>
+          <button type="button" class="remove-entry-btn" aria-label="یہ اندراج حذف کریں">✕</button>
+        </div>
+        <div class="date-entry-grid">
+          <div class="date-sub-field">
+            <label>خون شروع ہونے کی تاریخ</label>
+            <input type="date" class="bleed-start" name="excess-bleed-start[]">
+          </div>
+          <div class="date-sub-field">
+            <label>خون ختم ہونے کی تاریخ</label>
+            <input type="date" class="bleed-end" name="excess-bleed-end[]">
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="date-entry-template">
+      <div class="date-entry-row">
+        <div class="date-entry-header">
+          <span class="date-entry-num"></span>
+          <button type="button" class="remove-entry-btn" aria-label="یہ دورانیہ حذف کریں">✕</button>
+        </div>
+        <div class="date-entry-grid">
+          <div class="date-sub-field">
+            <label>خون شروع ہونے کی تاریخ</label>
+            <input type="date" class="bleed-start" name="bleed-start[]">
+          </div>
+          <div class="date-sub-field">
+            <label>خون ختم ہونے کی تاریخ</label>
+            <input type="date" class="bleed-end" name="bleed-end[]">
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <svg class="stroke-divider" viewBox="0 0 260 22">
+    <line x1="0" y1="11" x2="100" y2="11" />
+    <polygon class="diamond" points="130,2 140,11 130,20 120,11" />
+    <polygon class="diamond" points="155,4 163,11 155,18 147,11" />
+    <polygon class="diamond" points="105,4 113,11 105,18 97,11" />
+    <line x1="160" y1="11" x2="260" y2="11" />
+  </svg>
+  <p>یہ رہنمائی عمومی نوعیت کی ہے۔ انفرادی نوعیت کے مسائل کے لیے مذکورہ بالا فارم استعمال کریں۔</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// ===== Generic dynamic date-entry row builder =====
+function setupDateEntryGroup(containerId, templateId, addBtnId, numberLabel) {
+  const container = document.querySelector(containerId);
+  const template = document.querySelector(templateId);
+  const addBtn = document.querySelector(addBtnId);
+  if (!container || !template || !addBtn) return;
+
+  function renumber() {
+    container.querySelectorAll('.date-entry-row').forEach((row, i) => {
+      row.querySelector('.date-entry-num').textContent = numberLabel + ' ' + (i + 1);
+      const removeBtn = row.querySelector('.remove-entry-btn');
+      removeBtn.style.visibility = container.children.length > 1 ? 'visible' : 'hidden';
+    });
+  }
+
+  function addEntry() {
+    const clone = template.content.cloneNode(true);
+    const row = clone.querySelector('.date-entry-row');
+    row.querySelector('.remove-entry-btn').addEventListener('click', () => {
+      row.remove();
+      renumber();
+    });
+    container.appendChild(clone);
+    renumber();
+  }
+
+  addBtn.addEventListener('click', addEntry);
+  addEntry();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupDateEntryGroup('#excess-bleed-entries', '#excess-bleed-template', '#add-excess-entry-btn', 'اندراج نمبر');
+  setupDateEntryGroup('#date-entries', '#date-entry-template', '#add-entry-btn', 'دورانیہ نمبر');
+  // second entry by default for the monthly-history group only
+  document.querySelector('#add-entry-btn').click();
+});
+</script>
+</body>
+</html>
